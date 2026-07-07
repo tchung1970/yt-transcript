@@ -19,8 +19,9 @@ paste a YouTube link.
 Then upload it via **Settings → Skills → Add → Upload skill**. The zip contains
 `SKILL.md` (name + description + instructions) and `yt-transcript.sh`.
 
-Once installed, just ask naturally — e.g. *"Get me the transcript from <url>"* — and
-the skill triggers automatically.
+Once installed, just ask naturally and the skill triggers automatically. For example:
+
+> **Get me the transcript from https://www.youtube.com/watch?v=bjdBVZa66oU**
 
 ### One-time setup in the Claude Desktop sandbox
 
