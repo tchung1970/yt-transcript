@@ -69,10 +69,10 @@ ytt <youtube-url-or-id> [-o output_dir] [-l lang] [-m whisper_model] [-k]
 
 ```bash
 # Simplest — save transcript to the current directory
-ytt https://www.youtube.com/watch?v=JpJaEPGzPF4
+ytt https://www.youtube.com/watch?v=bjdBVZa66oU&t=2s
 
 # Bare video ID works too
-ytt JpJaEPGzPF4
+ytt bjdBVZa66oU
 
 # Choose an output folder and a non-English caption track
 ytt -o ~/transcripts -l es https://youtu.be/VIDEO_ID
