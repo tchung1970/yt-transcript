@@ -46,6 +46,10 @@ On this machine `whisper` is installed under Python 3.12's framework bin, separa
 - yt-dlp and whisper are run fully silenced (`--quiet ... >/dev/null 2>&1`); only the script's own `>>` status lines reach the console. When debugging a download failure, temporarily remove those redirects to see the tool output.
 - Test the caption path with `jNQXAC9IVRw` (has captions). To exercise the whisper fallback, use a video with captions disabled — it is slow and model-download-heavy on first run.
 
+## Repository
+
+This project is a public GitHub repo: **https://github.com/tchung1970/yt-transcript** (`origin`, branch `main`). Tracked files: `yt-transcript.sh`, `README.md`, `CLAUDE.md`, `LICENSE` (MIT), `.gitignore`, and `yt-transcript-skill.zip` (committed as the distributable skill). `.gitignore` excludes the timestamped `ytt_*.txt` sample outputs, `.claude/settings.local.json`, and `.DS_Store`. The README leads with the **Claude Skill** section (a prominent zip download link, raw URL `.../raw/main/yt-transcript-skill.zip`) followed by Requirements → Installation → Usage → How it works → Notes → License; keep the install snippet path generic (`"$(pwd)/yt-transcript.sh"`), not a hardcoded home directory.
+
 ## Skill packaging
 
 `yt-transcript-skill.zip` is the packaged Claude skill. It contains `yt-transcript/yt-transcript.sh` (a byte-for-byte copy of the script in this directory) plus `yt-transcript/SKILL.md`; it does **not** include `CLAUDE.md`, `README.md`, or the sample `ytt_*.txt` output. The zip's copy of the script does **not** update automatically — after editing `yt-transcript.sh` you must re-package the zip (and keep `SKILL.md` in sync). To confirm the loose script and the zipped one match, compare their checksums (`shasum yt-transcript.sh` vs the extracted copy).
