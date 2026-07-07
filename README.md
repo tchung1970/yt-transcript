@@ -84,14 +84,15 @@ ytt -m medium -k https://youtu.be/VIDEO_ID
 ### What it prints
 
 ```
->> Title   : Finally, The CORRECT Way to Run Local AI on a Mac
-   Channel : Samuel Gregory
-   Length  : 9m 3s
-   Uploaded: 2026-06-30
-   Views   : 23362
+$ ytt https://www.youtube.com/watch?v=bjdBVZa66oU
+>> Title   : What are skills?
+   Channel : Claude
+   Length  : 2m 54s
+   Uploaded: 2026-02-27
+   Views   : 1336430
 >> Checking for captions (en)...
 >> Found captions — converting to text.
->> Saved: ./ytt_20260706_213414.txt
+>> Saved: ./ytt_20260707_070444.txt
 ```
 
 Output filename is always `ytt_YYYYMMDD_HHMMSS.txt` — the timestamp keeps runs from
