@@ -9,6 +9,44 @@ reflowed into readable paragraphs and written to a timestamped `.txt` file.
 
 ---
 
+## Using it as a Claude Skill
+
+The script is also packaged as a Claude Skill so Claude can run it for you when you
+paste a YouTube link.
+[**Download `yt-transcript-skill.zip`**](https://github.com/tchung1970/yt-transcript/raw/main/yt-transcript-skill.zip),
+then upload it via **Settings → Skills → Add → Upload skill**. The zip contains
+`SKILL.md` (name + description + instructions) and `yt-transcript.sh`.
+
+Once installed, just ask naturally — e.g. *"Get me the transcript from <url>"* — and
+the skill triggers automatically.
+
+### One-time setup in the Claude Desktop sandbox
+
+The desktop app runs skill code in a sandbox that **blocks network egress by
+default**, so a few one-time steps are needed before it can reach YouTube:
+
+1. **Whitelist the domains.** In **Settings → Capabilities → Domain allowlist →
+   Additional allowed domains**, add all three:
+   - `www.youtube.com` — page + `api/timedtext` caption endpoint
+   - `youtubei.googleapis.com` — yt-dlp's InnerTube metadata API
+   - `*.googlevideo.com` — caption/audio data stream (must be a wildcard)
+2. **Start a fresh chat.** Allowlist changes only apply to a newly-provisioned
+   sandbox — an existing chat keeps returning `403 host_not_allowed`.
+
+Notes:
+- `yt-dlp` is not preinstalled in the sandbox; the skill's preflight installs it
+  with `pip` on first run.
+- The sandbox routes traffic through a TLS-intercepting proxy with a self-signed
+  CA. There is **nothing to bundle** — the correct CA is already in the system
+  trust store; the skill points yt-dlp at it (`SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt`,
+  with a `certifi` append as fallback). Never use `--no-check-certificates`.
+- On your **own machine** (or a Claude Code session) none of this applies — there
+  is no sandbox, so the script just runs.
+
+See `SKILL.md` inside the zip for the full preflight instructions Claude follows.
+
+---
+
 ## Requirements
 
 The script is a thin wrapper — it installs nothing and shells out to tools that
@@ -97,44 +135,6 @@ $ ytt https://www.youtube.com/watch?v=bjdBVZa66oU
 
 Output filename is always `ytt_YYYYMMDD_HHMMSS.txt` — the timestamp keeps runs from
 colliding. The video title is shown on screen but not used in the filename.
-
----
-
-## Using it as a Claude Skill
-
-The script is also packaged as a Claude Skill so Claude can run it for you when you
-paste a YouTube link.
-[**Download `yt-transcript-skill.zip`**](https://github.com/tchung1970/yt-transcript/raw/main/yt-transcript-skill.zip),
-then upload it via **Settings → Skills → Add → Upload skill**. The zip contains
-`SKILL.md` (name + description + instructions) and `yt-transcript.sh`.
-
-Once installed, just ask naturally — e.g. *"Get me the transcript from <url>"* — and
-the skill triggers automatically.
-
-### One-time setup in the Claude Desktop sandbox
-
-The desktop app runs skill code in a sandbox that **blocks network egress by
-default**, so a few one-time steps are needed before it can reach YouTube:
-
-1. **Whitelist the domains.** In **Settings → Capabilities → Domain allowlist →
-   Additional allowed domains**, add all three:
-   - `www.youtube.com` — page + `api/timedtext` caption endpoint
-   - `youtubei.googleapis.com` — yt-dlp's InnerTube metadata API
-   - `*.googlevideo.com` — caption/audio data stream (must be a wildcard)
-2. **Start a fresh chat.** Allowlist changes only apply to a newly-provisioned
-   sandbox — an existing chat keeps returning `403 host_not_allowed`.
-
-Notes:
-- `yt-dlp` is not preinstalled in the sandbox; the skill's preflight installs it
-  with `pip` on first run.
-- The sandbox routes traffic through a TLS-intercepting proxy with a self-signed
-  CA. There is **nothing to bundle** — the correct CA is already in the system
-  trust store; the skill points yt-dlp at it (`SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt`,
-  with a `certifi` append as fallback). Never use `--no-check-certificates`.
-- On your **own machine** (or a Claude Code session) none of this applies — there
-  is no sandbox, so the script just runs.
-
-See `SKILL.md` inside the zip for the full preflight instructions Claude follows.
 
 ---
 
