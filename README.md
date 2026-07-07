@@ -13,8 +13,10 @@ reflowed into readable paragraphs and written to a timestamped `.txt` file.
 
 The script is also packaged as a Claude Skill so Claude can run it for you when you
 paste a YouTube link.
-[**Download `yt-transcript-skill.zip`**](https://github.com/tchung1970/yt-transcript/raw/main/yt-transcript-skill.zip),
-then upload it via **Settings → Skills → Add → Upload skill**. The zip contains
+
+### ⬇️ [Download the skill — `yt-transcript-skill.zip`](https://github.com/tchung1970/yt-transcript/raw/main/yt-transcript-skill.zip)
+
+Then upload it via **Settings → Skills → Add → Upload skill**. The zip contains
 `SKILL.md` (name + description + instructions) and `yt-transcript.sh`.
 
 Once installed, just ask naturally — e.g. *"Get me the transcript from <url>"* — and
