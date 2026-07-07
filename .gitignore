@@ -1,0 +1,8 @@
+# Transcript outputs (timestamped, regenerated on each run)
+ytt_*.txt
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# macOS
+.DS_Store
