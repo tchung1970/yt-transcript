@@ -35,11 +35,11 @@ pip install -U openai-whisper      # only if you need the transcription fallback
 
 ## Installation
 
-The script is already symlinked as `ytt` and set up for unquoted URLs:
+Symlink the script onto your `PATH` as `ytt`, and set it up for unquoted URLs:
 
 ```bash
-# symlink onto PATH
-ln -sf /Users/tchung/claude/yt-transcript/yt-transcript.sh ~/bin/ytt
+# symlink onto PATH (run from the repo directory, or use the script's full path)
+ln -sf "$(pwd)/yt-transcript.sh" ~/bin/ytt
 
 # in ~/.zshrc — lets you paste URLs with ? and & without quoting them
 alias ytt='noglob ytt'
