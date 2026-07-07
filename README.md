@@ -199,3 +199,9 @@ temporarily remove those redirects.
   caption path finds nothing and (for the `en` default) whisper transcribes instead.
 - **`set -euo pipefail`** is on. Optional command substitutions (e.g. the `find`
   calls) are guarded with `|| true` so an empty result does not abort the script.
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE).
