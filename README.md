@@ -9,7 +9,7 @@ reflowed into readable paragraphs and written to a timestamped `.txt` file.
 
 ---
 
-## Using it as a Claude Skill
+## Claude Skill
 
 The script is also packaged as a Claude Skill so Claude can run it for you when you
 paste a YouTube link.
